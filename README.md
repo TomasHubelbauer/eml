@@ -26,10 +26,75 @@ const _ = eml(
 - Slices related contents representation to 76 MIME characters automatically
 - Slices long HTML lines to 76 MIME characters automatically and correctly
 
+## Installation
+
+`npm install https://github.com/TomasHubelbauer/eml`
+
+## Usage
+
+```javascript
+eml(
+  'string',
+  7, // number
+  helper(),
+  …
+)
+```
+
+### `subject` Helper
+
+`subject('subject')`
+
+### `sender` Helper
+
+`sender('name', 'email')` or `sender('email')`
+
+### `recipient` Helper
+
+`recipient('name', 'email')` or `recipient('email')`
+
+### `inline` Helper
+
+`inline('name', 'type', buffer)`
+
+Use in HTML through `<img src="cid:name@" />`.
+
 ## Status
 
-An idea for now, but I need it for something, so I'm likely to actually implement this.
+The stuff documented in this readme is working and there are some tests, too.
+
+## Changelog
+
+### `1.0.0` 2020-03-03
+
+Initial release with the `subject`, `sender`, `recipient` and `inline` helpers.
+
+## Testing
+
+`node test` (with or without extension) `npx nodemon test.js` (with extension)
+to run the tests on each change.
 
 ## To-Do
 
-### Implement this thing
+### Split long HTML lines contextually in order not to break semantics
+
+Do not split tag name, attribute names and attributes values.
+Do not split words.
+
+### Split long plain text lines
+
+### Split long header values
+
+Subject, sender(s), recipient(s) etc.
+
+### Allow multiple senders and recipients
+
+Probably by concatenating multiple instances of the helper.
+
+### Add more range and format checks throughout
+
+### Add a helper for attachments
+
+### Include the plain text variant even with HTML-only emails with no multiparts
+
+### Add encoding to the plain and HTML variants to support Unicode
