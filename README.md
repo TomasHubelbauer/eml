@@ -23,6 +23,8 @@ const _ = eml(
 - Has helpers for various common headers
 - Generates plain text version from an HTML email
 - Has helpers for inline and attached files
+- Slices related contents representation to 76 MIME characters automatically
+- Slices long HTML lines to 76 MIME characters automatically and correctly
 
 ## Status
 
